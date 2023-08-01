@@ -9,15 +9,15 @@ urlpatterns = [
     # view refers to the view function
     # name the URL
 
-    # path for registration
-
-    # path for login
-
-    # path for logout
 
     path(route='', view=views.get_dealerships, name='index'),
     path(route = 'about/', view = views.aboutUs, name='about'),
     path(route = 'contact/', view = views.contactUs, name='contact'),
+    path(route ='login/', view = views.login_request, name='login'),
+    path(route = 'logout/', view = views.logout_request, name='logout'),
+    path(route = 'signup/', view = views.registration_request, name='registration'),
+
+
 
 
     # path for dealer reviews view
