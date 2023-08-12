@@ -92,13 +92,14 @@ def contactUs(request):
     if request.method == "GET":
         return render(request, 'djangoapp/contact.html', context)
 
+# View to render the reviews of a dealer
 def get_dealer_details(request, dealer_id):
     context = {}
     if request.method == "GET":
         url = 'https://us-south.functions.appdomain.cloud/api/v1/web/ce5e7331-ecda-4c59-93e7-e273cf8c4a1d/dealership-package/get-reviews-on-delarship'
         reviews = get_dealer_reviews_from_cf(url, dealer_id=dealer_id)
         context = {
-            "reviews":  reviews,
+            "reviews":  reviews, 
             "dealer_id": dealer_id
         }
 
@@ -147,7 +148,7 @@ def add_review(request, dealer_id):
                 print("Review posted successfully.")
 
             # After posting the review the user is redirected back to the dealer details page
-            return redirect("djangoapp:dealer_details", dealer_id=dealer_id)
+            return redirect("djangoapp:dealer_details", dealerId=dealer_id)
 
     else:
         # If user isn't logged in, redirect to login page
